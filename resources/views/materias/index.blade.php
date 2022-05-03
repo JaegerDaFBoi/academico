@@ -25,42 +25,51 @@
                                 <table class="min-w-full">
                                     <thead class="border-b">
                                         <tr>
-                                            <th scope="col"
-                                                class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                                
+                                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+
                                             </th>
-                                            <th scope="col"
-                                                class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                                 Nombre
                                             </th>
-                                            <th scope="col"
-                                                class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                                 Version
                                             </th>
-                                            <th scope="col"
-                                                class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                                 Opciones
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
-                                    @foreach ($courses as $materia)
+
+                                        @foreach ($materias as $materia)
                                         <tr class="border-b">
-                                            
+
                                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                                 {{$materia->id}}
                                             </td>
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                            {{$materia->name}} 
+                                                {{$materia->name}}
                                             </td>
-                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                            {{$materia->version}}
+                                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                {{$materia->version}}
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('materias.edit',$materia) }}">
+                                                    <x-jet-button>Editar</x-jet-button>
+                                                </a>
+                                                <a href="{{ route('materias.show', $materia) }}">
+                                                    <x-jet-button>Ver</x-jet-button>
+                                                </a>
+                                                <form action="{{ route('materias.destroy',$materia) }}" method="post">
+                                                    @method("DELETE")
+                                                    @csrf
+                                                    <x-jet-danger-button type="submit">Eliminar</x-jet-danger-button>
+                                                </form>
                                             </td>
                                             @endforeach
                                         </tr>
-                                       
-                                       
+
+
                                     </tbody>
 
                                 </table>

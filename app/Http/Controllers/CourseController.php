@@ -16,8 +16,11 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $materias = DB::table('courses')->get();
-        return view('materias.index', ['courses'=>$materias]);
+        $materias=Course::all();
+        return view('materias.index', compact('materias'));
+        /*$materias = DB::table('courses')->get();
+        $courses=get_object_vars($materias);
+        return view('materias.index', ['courses'=>$courses]);*/
     }
 
     /**
@@ -55,9 +58,9 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function show(Course $course)
+    public function show(Course $materia)
     {
-        //
+        return view('materias.ver', compact('materia'));
     }
 
     /**
@@ -66,9 +69,9 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function edit(Course $course)
+    public function edit(Course $materia)
     {
-        //
+        return view('materias.editar',compact('materia'));
     }
 
     /**
