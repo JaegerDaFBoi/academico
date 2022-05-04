@@ -81,9 +81,14 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Course $course)
+    public function update(Request $request, Course $materia)
     {
-        //
+        
+        $materia->name = $request->name;
+        $materia->version = $request->version;
+        $materia->save();
+        session()->flash("flash.banner","Materia Editada Satisfactoriamente");
+        return Redirect::route("materias.index");
     }
 
     /**
@@ -92,8 +97,9 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Course $course)
+    public function destroy(Course $materia)
     {
-        //
+        $materia->delete();
+        return Redirect::route('materias.index');
     }
 }
