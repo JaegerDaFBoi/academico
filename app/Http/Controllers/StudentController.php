@@ -54,9 +54,10 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function show(Student $student)
+    public function show(Student $estudiante)
     {
-        //
+        
+        return view('estudiantes.ver', compact('estudiante'));
     }
 
     /**
@@ -65,9 +66,9 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit(Student $estudiante)
     {
-        //
+        return view('estudiantes.editar', compact('estudiante'));
     }
 
     /**
@@ -77,9 +78,14 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(Request $request, Student $estudiante)
     {
-        //
+        $estudiante->documento = $request->doc;
+        $estudiante->nombre = $request->name;
+        $estudiante->grado = $request->grade;
+        $estudiante->save();
+        session()->flash("flash.banner","Estudiante Editado Satisfactoriamente");
+        return Redirect::route('estudiantes.index');
     }
 
     /**
@@ -88,8 +94,9 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
+    public function destroy(Student $estudiante)
     {
-        //
+        $estudiante->delete();
+        return Redirect::route('estudiantes.index'); 
     }
 }

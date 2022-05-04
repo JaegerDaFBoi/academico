@@ -13,11 +13,11 @@
 <div class="flex justify-center">
     <div class="p-2">
         <div class="flex justify-end">
-            <a href="{{ route('estudiantes.create') }}">
+            
                 <x-jet-button type="submit">
                     Guardar
                 </x-jet-button>
-            </a>
+            
         </div>
     </div>
 </div>

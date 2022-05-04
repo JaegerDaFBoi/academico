@@ -25,42 +25,55 @@
                                 <table class="min-w-full">
                                     <thead class="border-b">
                                         <tr>
-                                            <th scope="col"
-                                                class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                                 ID
                                             </th>
-                                            <th scope="col"
-                                                class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                                 Documento
                                             </th>
-                                            <th scope="col"
-                                                class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                                 Nombre
                                             </th>
-                                            <th scope="col"
-                                                class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                                 Grado
                                             </th>
-                                            <th scope="col"
-                                                class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                                 Opciones
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                      
+                                        @foreach ($estudiantes as $estudiante)
                                         <tr class="border-b">
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                {{ $estudiante->id}}
                                             </td>
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                            Mauricio Valencia Zuluaga 
+                                                {{ $estudiante->documento }}
                                             </td>
-                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                            11-A
+                                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                {{ $estudiante->nombre}}
                                             </td>
+                                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                {{ $estudiante->grado}}
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('estudiantes.show', $estudiante) }}">
+                                                    <x-jet-button>Ver</x-jet-button>
+                                                </a>
+                                                <a href="{{ route('estudiantes.edit', $estudiante) }}">
+                                                    <x-jet-button>Editar</x-jet-button>
+                                                </a>
+                                                <form action="{{ route('estudiantes.destroy',$estudiante) }}" method="post">
+                                                    @method("DELETE")
+                                                    @csrf
+                                                    <x-jet-danger-button type="submit">Eliminar</x-jet-danger-button>
+                                                </form>
+                                            </td>
+                                            @endforeach
                                         </tr>
-                                       
-                                       
+
+
                                     </tbody>
                                 </table>
                             </div>

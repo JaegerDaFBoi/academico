@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\NotesController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,4 +30,5 @@ Route::middleware([
     })->name('dashboard');
     Route::resource('/materias',CourseController::class);
     Route::resource('/estudiantes',StudentController::class);
+    Route::resource('/notas',NoteController::class);
 });
