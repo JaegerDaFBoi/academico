@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Note;
+use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class NoteController extends Controller
 {
@@ -14,7 +17,8 @@ class NoteController extends Controller
      */
     public function index()
     {
-        //
+        $notas = Note::all();
+        return view('notas.index', compact('notas'));
     }
 
     /**
@@ -24,7 +28,9 @@ class NoteController extends Controller
      */
     public function create()
     {
-        //
+        $materias=Course::all();
+        $estudiantes=Student::all();
+        return view('notas.crear', compact("materias","estudiantes"));
     }
 
     /**
@@ -35,7 +41,17 @@ class NoteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $nota = new Note();
+
+        $nota->nota = $request->nota;
+        $nota->student_id = $request->estudiante;
+        $nota->course_id = $request->materia;
+        
+
+        $nota->save();
+        session()->flash("flash.banner", "Nota creada de manera satisfactoria");
+
+        return Redirect::route('notas.index');
     }
 
     /**

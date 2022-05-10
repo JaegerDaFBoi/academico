@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\CourseController;
-use App\Http\Controllers\NotesController;
+use App\Http\Controllers\NoteController;
 use App\Http\Controllers\StudentController;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return Redirect::route('login');
 });
 
 Route::middleware([
@@ -26,7 +27,7 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return Redirect::route('materias.index');
     })->name('dashboard');
     Route::resource('/materias',CourseController::class);
     Route::resource('/estudiantes',StudentController::class);
