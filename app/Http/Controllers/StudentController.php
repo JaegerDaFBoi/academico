@@ -43,6 +43,8 @@ class StudentController extends Controller
         $estudiante->documento=$request->doc;
         $estudiante->nombre=$request->name;
         $estudiante->grado=$request->grade;
+        $estudiante->tipo=$request->nivel;
+        $estudiante->correo=$request->correo;
         $estudiante->save();
         session()->flash("flash.banner","Estudiante Creado Satisfactoriamente");
         return Redirect::route('estudiantes.index');
@@ -83,6 +85,8 @@ class StudentController extends Controller
         $estudiante->documento = $request->doc;
         $estudiante->nombre = $request->name;
         $estudiante->grado = $request->grade;
+        $estudiante->tipo = $request->nivel;
+        $estudiante->correo = $request->correo;
         $estudiante->save();
         session()->flash("flash.banner","Estudiante Editado Satisfactoriamente");
         return Redirect::route('estudiantes.index');

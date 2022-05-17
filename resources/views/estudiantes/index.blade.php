@@ -38,6 +38,12 @@
                                                 Grado
                                             </th>
                                             <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                                Nivel
+                                            </th>
+                                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                                E-Mail
+                                            </th>
+                                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                                 Opciones
                                             </th>
                                         </tr>
@@ -56,6 +62,12 @@
                                             </td>
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                 {{ $estudiante->grado}}
+                                            </td>
+                                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                {{ $estudiante->tipo}}
+                                            </td>
+                                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                {{ $estudiante->correo}}
                                             </td>
                                             <td>
                                                 <a href="{{ route('estudiantes.show', $estudiante) }}">

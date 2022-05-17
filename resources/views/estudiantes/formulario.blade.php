@@ -9,6 +9,26 @@
 
     <x-jet-label for="grade" value="{{ __('Grado') }}" />
     <x-jet-input id="grade" class="block mt-1 w-full" type="text" name="grade" :value="old('grade', $estudiante->grado)" required autofocus />
+
+    
+    <x-jet-label class="my-1" value="{{ __('Nivel') }}" />
+    <div class="form-check"> 
+        <input class="form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" name="nivel" id="primaria" value="primaria" checked>
+        <label class="form-check-label inline-block text-gray-800" for="primaria">
+            Primaria
+        </label>
+    </div>
+    <div class="form-check"> 
+        <input class="form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" name="nivel" id="secundaria" value="secundaria">
+        <label class="form-check-label inline-block text-gray-800" for="secundaria">
+            Secundaria
+        </label>
+    </div>
+
+    <x-jet-label for="correo" value="{{ __('E-Mail') }}" />
+    <x-jet-input id="correo" class="block mt-1 w-full" type="email" name="correo" :value="old('correo', $estudiante->correo)" required autofocus />   
+    
+
 </div>
 <div class="flex justify-center">
     <div class="p-2">

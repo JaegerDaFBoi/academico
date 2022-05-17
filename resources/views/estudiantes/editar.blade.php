@@ -9,7 +9,7 @@
       <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
         <form action="{{ route ('estudiantes.update', $estudiante) }}" method="post">
           @method('PUT')
-          @include(estudiantes.formularioedit)
+          @include('estudiantes.formularioedit')
         </form>
       </div>
     </div>
