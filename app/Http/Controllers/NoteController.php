@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NotificarNota;
 use App\Models\Course;
 use App\Models\Note;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 
 class NoteController extends Controller
@@ -47,8 +49,12 @@ class NoteController extends Controller
         $nota->student_id = $request->estudiante;
         $nota->course_id = $request->materia;
         
+        $materia = Course::find($request->materia);
+        $estudiante = Student::find($request->estudiante);
 
+        Mail::to("jcamilo2696@gmail")->send(new NotificarNota($request->$nota, $materia->name));
         $nota->save();
+        
         session()->flash("flash.banner", "Nota creada de manera satisfactoria");
 
         return Redirect::route('notas.index');
