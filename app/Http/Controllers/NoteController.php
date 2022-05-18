@@ -52,7 +52,7 @@ class NoteController extends Controller
         $materia = Course::find($request->materia);
         $estudiante = Student::find($request->estudiante);
 
-        Mail::to("jcamilo2696@gmail")->send(new NotificarNota($request->$nota, $materia->name));
+        Mail::to("jcamilo2696@gmail.com")->send(new NotificarNota($request->$nota, $materia->name));
         $nota->save();
         
         session()->flash("flash.banner", "Nota creada de manera satisfactoria");
