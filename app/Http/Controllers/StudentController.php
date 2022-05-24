@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreStudentRequest;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
@@ -37,8 +38,9 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreStudentRequest $request)
     {
+        $request->validate();
         $estudiante = new Student();
         $estudiante->documento=$request->doc;
         $estudiante->nombre=$request->name;
